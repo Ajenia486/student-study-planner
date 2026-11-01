@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Study Planner</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">SP</div>
+        <div class="brand-text">
+          <h1>Student Study Planner</h1>
+          <p>Organise your study tasks and assignments in one place.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="card add-card" aria-labelledby="add-heading">
+        <h2 id="add-heading">Add a new task</h2>
+        <form id="task-form" novalidate>
+          <div class="field">
+            <label for="task-title">Task title</label>
+            <input
+              type="text"
+              id="task-title"
+              name="task-title"
+              placeholder="e.g. Revise chapter 4 notes"
+              autocomplete="off"
+              maxlength="80"
+            />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="task-subject">Subject / Course</label>
+              <input
+                type="text"
+                id="task-subject"
+                name="task-subject"
+                placeholder="e.g. Introduction to Programming"
+                autocomplete="off"
+                maxlength="60"
+              />
+            </div>
+            <div class="field">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" name="task-priority">
+                <option value="Normal" selected>Normal</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="error" id="form-error" role="alert" aria-live="assertive"></p>
+
+          <button type="submit" class="btn btn-primary" id="add-btn">
+            <span aria-hidden="true">+</span> Add Task
+          </button>
+        </form>
+      </section>
+
+      <section class="card list-card" aria-labelledby="list-heading">
+        <div class="list-head">
+          <h2 id="list-heading">Your tasks</h2>
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+            <button class="filter-btn" data-filter="active" type="button">Active</button>
+            <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+          </div>
+        </div>
+
+        <ul id="task-list" class="task-list"></ul>
+
+        <p class="empty-state" id="empty-state">
+          <span class="empty-icon" aria-hidden="true">📚</span>
+          <span id="empty-text">No tasks yet. Add your first study task above to get started.</span>
+        </p>
+
+        <div class="summary" id="summary"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>ATU Virtual Internship &middot; Software Development Mini Project</p>
+      <p class="muted">Your tasks are saved automatically in this browser.</p>
+    </footer>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
